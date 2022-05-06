@@ -11,10 +11,12 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const { Post } = require('./Model/Post');
+
 app.listen(port, () => {
   mongoose
     .connect(
-      'mongodb+srv://zhak1230:dnjsdud639@cluster0.qo0ws.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+      'mongodb+srv://zhak1230:dnjsdud639@cluster0.qo0ws.mongodb.net/Community?retryWrites=true&w=majority'
     )
     .then(() => {
       console.log(`Example app listening at http://localhost:${port}`);
@@ -34,6 +36,8 @@ app.get('*', (요청, 응답) => {
 });
 
 app.post('/api/test', (요청, 응답) => {
-  console.log(요청.body);
-  응답.status(200).json({ success: true, text: '안녕하세요' });
+  const CommunityPost = new Post({ title: 'test', content: '테스트입니다.' });
+  CommunityPost.save().then(() => {
+    응답.status(200).json({ success: true, text: '안녕하세요' });
+  });
 });
