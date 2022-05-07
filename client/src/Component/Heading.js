@@ -34,7 +34,7 @@ function Heading() {
             </Nav.Link>
             <Nav.Link>
               <Link
-                to='/list'
+                to='/'
                 style={{
                   color: 'white',
                   textDecoration: 'none',
