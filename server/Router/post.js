@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer');
 const { Post } = require('../Model/Post');
 const { Counter } = require('../Model/Counter');
 
@@ -72,8 +73,26 @@ router.post('/delete', (req, res) => {
     });
 });
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'image/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage }).single('file');
+
 router.post('/image/upload', (req, res) => {
-  console.log(req.body, req.formData);
+  upload(req, res, (err) => {
+    if (err) {
+      // console.log(err);
+      res.status(400).json({ success: false });
+    } else {
+      res.status(200).json({ success: true, filePath: res.req.file.path });
+    }
+  });
 });
 
 module.exports = router;

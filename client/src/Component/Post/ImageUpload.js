@@ -2,12 +2,14 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import axios from 'axios';
 
-function ImageUpload() {
+function ImageUpload(props) {
   const FileUpload = (e) => {
     // console.log(e.target.files);
     var formData = new FormData();
     formData.append('file', e.target.files[0]);
-    axios.post('/api/post/image/upload');
+    axios.post('/api/post/image/upload', formData).then((response) => {
+      props.setImage(response.data.filePath);
+    });
   };
 
   return (
