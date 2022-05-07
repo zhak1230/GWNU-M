@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const multer = require('multer');
+
 const { Post } = require('../Model/Post');
 const { Counter } = require('../Model/Counter');
+
+const setUpload = require('../Util/upload');
 
 router.post('/submit', (req, res) => {
   let temp = req.body;
@@ -51,6 +54,7 @@ router.post('/edit', (req, res) => {
   let temp = {
     title: req.body.title,
     content: req.body.content,
+    image: req.body.image,
   };
   Post.updateOne({ postNum: Number(req.body.postNum) }, { $set: temp })
     .exec()
@@ -73,6 +77,7 @@ router.post('/delete', (req, res) => {
     });
 });
 
+/*
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'image/');
@@ -94,5 +99,15 @@ router.post('/image/upload', (req, res) => {
     }
   });
 });
+*/
+
+router.post(
+  '/image/upload',
+  setUpload('gwnu-community/post'),
+  (req, res, next) => {
+    console.log(res.req);
+    res.status(200).json({ success: true, filePath: res.req.file.location });
+  }
+);
 
 module.exports = router;

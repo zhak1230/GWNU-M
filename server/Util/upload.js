@@ -20,7 +20,7 @@ const S3 = new AWS.S3({
 function setUpload(bucket) {
   var upload = multer({
     storage: multerS3({
-      s3: s3,
+      s3: S3,
       bucket: bucket,
       acl: 'public-read-write',
       key: function (req, file, cb) {
@@ -28,6 +28,8 @@ function setUpload(bucket) {
         cb(null, Date.now().toString() + extension);
       },
     }),
-  });
+  }).single('file');
   return upload;
 }
+
+module.exports = setUpload;

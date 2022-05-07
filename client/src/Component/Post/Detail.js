@@ -66,7 +66,7 @@ function Detail() {
             <h1>{PostInfo.title}</h1>
             {PostInfo.image ? (
               <img
-                src={`http://localhost:5000/${PostInfo.image}`}
+                src={PostInfo.image}
                 alt=''
                 style={{
                   width: '100%',

@@ -8,6 +8,7 @@ function ImageUpload(props) {
     var formData = new FormData();
     formData.append('file', e.target.files[0]);
     axios.post('/api/post/image/upload', formData).then((response) => {
+      console.log(response.data);
       props.setImage(response.data.filePath);
     });
   };
