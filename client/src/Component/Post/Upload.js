@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ImageUpload from './ImageUpload';
 import { useNavigate } from 'react-router-dom';
 import { UploadDiv, UploadFrom, UploadButtonDiv } from '../../Style/UploadCSS';
 import axios from 'axios';
@@ -46,6 +47,7 @@ function Upload(props) {
             setTitle(e.currentTarget.value);
           }}
         />
+        <ImageUpload />
         <label htmlFor='content'>내용</label>
         <textarea
           id='content'

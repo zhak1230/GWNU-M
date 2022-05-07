@@ -12,6 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/post', require('./Router/post'));
+
 app.listen(port, () => {
   mongoose
     .connect(
