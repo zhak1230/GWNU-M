@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ImageUpload from './ImageUpload.js';
 
 import { UploadDiv, UploadFrom, UploadButtonDiv } from '../../Style/UploadCSS';
 
 function Edit() {
   let params = useParams();
+  let navigate = useNavigate();
+
   const [PostInfo, setPostInfo] = useState({});
   const [Flag, setFlag] = useState(false);
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState();
-  let navigate = useNavigate();
+  const [Image, setImage] = useState('');
 
   useEffect(() => {
     let body = {
@@ -34,6 +37,7 @@ function Edit() {
   useEffect(() => {
     setTitle(PostInfo.title);
     setContent(PostInfo.content);
+    setImage(PostInfo.image);
   }, [PostInfo]);
 
   const onSubmit = (e) => {
@@ -46,6 +50,7 @@ function Edit() {
       title: Title,
       content: Content,
       postNum: params.postNum,
+      image: Image,
     };
 
     axios
@@ -65,44 +70,48 @@ function Edit() {
 
   return (
     <UploadDiv>
-      <UploadFrom>
-        <label htmlFor='label'>제목</label>
-        <input
-          id='title'
-          type='text'
-          value={Title || ''}
-          onChange={(e) => {
-            setTitle(e.currentTarget.value);
-          }}
-        />
-        <label htmlFor='content'>내용</label>
-        <textarea
-          id='content'
-          type='text'
-          value={Content || ''}
-          onChange={(e) => {
-            setContent(e.currentTarget.value);
-          }}
-        />
-        <UploadButtonDiv>
-          <button
-            className='cancel'
-            onClick={(e) => {
-              e.preventDefault();
-              navigate(-1);
+      {Flag && (
+        <UploadFrom>
+          <label htmlFor='label'>제목</label>
+          <input
+            id='title'
+            type='text'
+            value={Title || ''}
+            onChange={(e) => {
+              setTitle(e.currentTarget.value);
             }}
-          >
-            취소
-          </button>
-          <button
-            onClick={(e) => {
-              onSubmit(e);
+          />
+          <ImageUpload setImage={setImage} />
+          <label htmlFor='content'>내용</label>
+          <textarea
+            id='content'
+            type='text'
+            value={Content || ''}
+            onChange={(e) => {
+              setContent(e.currentTarget.value);
             }}
-          >
-            수정
-          </button>
-        </UploadButtonDiv>
-      </UploadFrom>
+          />
+
+          <UploadButtonDiv>
+            <button
+              className='cancel'
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(-1);
+              }}
+            >
+              취소
+            </button>
+            <button
+              onClick={(e) => {
+                onSubmit(e);
+              }}
+            >
+              수정
+            </button>
+          </UploadButtonDiv>
+        </UploadFrom>
+      )}
     </UploadDiv>
   );
 }
