@@ -6,7 +6,7 @@ function Heading() {
   return (
     <Navbar bg='dark' expand='lg' variant='dark'>
       <Container style={{}}>
-        <Navbar.Brand href='#home'>GWMU-M</Navbar.Brand>
+        <Navbar.Brand href='/'>GWMU-M</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
