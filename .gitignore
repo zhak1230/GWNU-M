@@ -1,5 +1,5 @@
-sever/Config/dev.js
-sever/node_modules
-sever/package-lock.json
+server/Config/dev.js
+server/node_modules
+server/package-lock.json
 client/node_modules
 client/package-lock.json
