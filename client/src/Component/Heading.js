@@ -33,14 +33,14 @@ function Heading() {
             </Link>
 
             <Link
-              to='/'
+              to='/login'
               style={{
                 color: 'white',
                 textDecoration: 'none',
                 marginRight: '10px',
               }}
             >
-              list
+              login
             </Link>
           </Nav>
         </Navbar.Collapse>

@@ -1,14 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { LoginDiv } from '../../Style/UserCSS';
 
 function Register() {
+  const [Name, setName] = useState('');
+  const [Email, setEmail] = useState('');
+  const [PW, setPW] = useState('');
+  const [PWConfirm, setPWConfirm] = useState('');
+
   return (
-    <div>
-      <input type='name' />
-      <input type='email' />
-      <input type='password' />
-      <input type='password' />
-      <button>회원가입</button>
-    </div>
+    <LoginDiv>
+      <form>
+        <label>이름</label>
+        <input
+          type='name'
+          value={Name}
+          onChange={(e) => {
+            setName(e.currentTarget.value);
+          }}
+        />
+        <label>이메일</label>
+        <input
+          type='email'
+          value={Email}
+          onChange={(e) => {
+            setEmail(e.currentTarget.value);
+          }}
+        />
+        <label>비밀번호</label>
+        <input
+          type='password'
+          value={PW}
+          onChange={(e) => {
+            setPW(e.currentTarget.value);
+          }}
+        />
+        <label>비밀번호 확인</label>
+        <input
+          type='password'
+          value={PWConfirm}
+          onChange={(e) => {
+            setPWConfirm(e.currentTarget.value);
+          }}
+        />
+        <button>회원가입</button>
+      </form>
+    </LoginDiv>
   );
 }
 
