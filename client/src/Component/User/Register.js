@@ -74,6 +74,7 @@ function Register() {
         <input
           type='password'
           value={PW}
+          placeholder='8자 이상이여야 합니다'
           minLength={8}
           onChange={(e) => {
             setPW(e.currentTarget.value);
@@ -82,6 +83,7 @@ function Register() {
         <label>비밀번호 확인</label>
         <input
           type='password'
+          placeholder='8자 이상이여야 합니다'
           value={PWConfirm}
           minLength={8}
           onChange={(e) => {
