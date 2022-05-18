@@ -4,23 +4,34 @@ const multer = require('multer');
 
 const { Post } = require('../Model/Post');
 const { Counter } = require('../Model/Counter');
+const { User } = require('../Model/User');
 
 const setUpload = require('../Util/upload');
 
 router.post('/submit', (req, res) => {
-  let temp = req.body;
+  let temp = {
+    title: req.body.title,
+    content: req.body.content,
+    image: req.body.image,
+  };
   Counter.findOne({ name: 'counter' })
+    .exec()
     .then((counter) => {
       temp.postNum = counter.postNum;
-      // console.log(temp);
-      const CommunityPost = new Post(temp);
-      CommunityPost.save().then(() => {
-        Counter.updateOne({ name: 'counter' }, { $inc: { postNum: 1 } }).then(
-          () => {
-            res.status(200).json({ success: true });
-          }
-        );
-      });
+      User.findOne({ uid: req.body.uid })
+        .exec()
+        .then((userInfo) => {
+          temp.author = userInfo._id;
+          const CommunityPost = new Post(temp);
+          CommunityPost.save().then(() => {
+            Counter.updateOne(
+              { name: 'counter' },
+              { $inc: { postNum: 1 } }
+            ).then(() => {
+              res.status(200).json({ success: true });
+            });
+          });
+        });
     })
     .catch((err) => {
       res.status(400).json({ success: false });
@@ -29,6 +40,7 @@ router.post('/submit', (req, res) => {
 
 router.post('/list', (req, res) => {
   Post.find()
+    .populate('author')
     .exec()
     .then((doc) => {
       res.status(200).json({ success: true, postList: doc });
@@ -40,6 +52,7 @@ router.post('/list', (req, res) => {
 
 router.post('/detail', (req, res) => {
   Post.findOne({ postNum: Number(req.body.postNum) })
+    .populate('author')
     .exec()
     .then((doc) => {
       console.log(doc);

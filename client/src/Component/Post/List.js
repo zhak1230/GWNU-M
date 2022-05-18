@@ -23,10 +23,12 @@ function List(props) {
   return (
     <ListDiv>
       {PostList.map((post, idx) => {
+        console.log(post);
         return (
           <ListItem key={idx}>
             <Link to={`/post/${post.postNum}`}>
               <p className='title'>{post.title}</p>
+              <p className='author'> {post.author.displayName}</p>
               <p>{post.content}</p>
             </Link>
           </ListItem>
