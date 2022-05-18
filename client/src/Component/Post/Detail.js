@@ -35,7 +35,7 @@ function Detail() {
   }, []);
 
   useEffect(() => {
-    console.log(PostInfo);
+    // console.log(PostInfo);
   }, [PostInfo]);
 
   const DeleteHandler = () => {

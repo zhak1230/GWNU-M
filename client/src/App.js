@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser, clearUser } from './Reducer/userSlice';
+import firebase from './firebase';
 
 import Heading from './Component/Heading';
 import List from './Component/Post/List';
@@ -11,6 +14,19 @@ import Login from './Component/User/Login';
 import Register from './Component/User/Register';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      // console.log('userInfo: ', userInfo);
+      if (userInfo !== null) {
+        dispatch(loginUser(userInfo.multiFactor.user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+  }, []);
+
   return (
     <>
       <Heading />
