@@ -15,14 +15,15 @@ function Upload(props) {
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!user.accessToken) {
+    if (user.isLoading && !user.accessToken) {
       alert('로그인한 회원만 글을 작성할 수 있습니다.');
       navigate('/login');
     }
-  }, []);
+  }, [user]);
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (Title === '' || Content === '') {
       return alert('모든 항목을 채워주세요!');
     }
