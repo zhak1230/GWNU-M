@@ -14,6 +14,7 @@ router.post('/submit', (req, res) => {
     content: req.body.content,
     image: req.body.image,
   };
+
   Counter.findOne({ name: 'counter' })
     .exec()
     .then((counter) => {

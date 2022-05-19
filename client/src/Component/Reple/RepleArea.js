@@ -2,11 +2,11 @@ import React from 'react';
 import RepleUpload from './RepleUpload';
 import RepleList from './RepleList';
 
-function RepleArea() {
+function RepleArea(props) {
   return (
     <div>
-      <RepleUpload />
-      <RepleList />
+      <RepleUpload postId={props.postId} />
+      <RepleList postId={props.postId} />
     </div>
   );
 }
