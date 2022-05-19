@@ -20,7 +20,6 @@ function RepleUpload(props) {
     };
 
     axios.post('/api/reple/submit', body).then((response) => {
-      setReple('');
       if (response.data.success) {
         alert('댓글 작성이 완료되었습니다.');
         window.location.reload();
