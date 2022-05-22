@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
+import { RepleUploadDiv } from '../../Style/RepleCSS.js';
+
 function RepleUpload(props) {
   const [Reple, setReple] = useState('');
   const user = useSelector((state) => state.user);
@@ -30,22 +32,24 @@ function RepleUpload(props) {
   };
 
   return (
-    <div>
-      <input
-        type='text'
-        value={Reple}
-        onChange={(e) => {
-          setReple(e.currentTarget.value);
-        }}
-      />
-      <button
-        onClick={(e) => {
-          submitHandler(e);
-        }}
-      >
-        등록
-      </button>
-    </div>
+    <RepleUploadDiv>
+      <form>
+        <input
+          type='text'
+          value={Reple}
+          onChange={(e) => {
+            setReple(e.currentTarget.value);
+          }}
+        />
+        <button
+          onClick={(e) => {
+            submitHandler(e);
+          }}
+        >
+          등록
+        </button>
+      </form>
+    </RepleUploadDiv>
   );
 }
 
