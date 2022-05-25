@@ -45,17 +45,38 @@ function Heading() {
         </Navbar.Collapse>
         <Navbar.Collapse className='justify-content-end'>
           {user.accessToken ? (
-            <Navbar.Text
-              style={{
-                color: 'white',
-                cursor: 'pointer',
-              }}
-              onClick={() => {
-                LogoutHandler();
-              }}
-            >
-              logout
-            </Navbar.Text>
+            <>
+              <Navbar.Text
+                style={{
+                  color: 'white',
+                  cursor: 'pointer',
+                  marginRight: '10px',
+                }}
+                onClick={() => {
+                  LogoutHandler();
+                }}
+              >
+                logout
+              </Navbar.Text>
+              {/* <br />
+              <Navbar.Text
+                style={{
+                  color: 'white',
+                  cursor: 'pointer',
+                }}
+              >
+                <Link
+                  to='/MyPage'
+                  style={{
+                    color: 'white',
+                    textDecoration: 'none',
+                    marginRight: '10px',
+                  }}
+                >
+                  MyPage
+                </Link>
+              </Navbar.Text> */}
+            </>
           ) : (
             <Link
               to='/login'

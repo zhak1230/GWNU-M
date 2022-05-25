@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+// import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
 
 import { RepleContentDiv, RepleUploadDiv } from '../../Style/RepleCSS.js';
@@ -33,9 +34,37 @@ function RepleContent(props) {
     });
   };
 
+  const DeleteHandler = (e) => {
+    e.preventDefault();
+    if (window.confirm('정말로 삭제하시겠습니까?')) {
+      let body = {
+        repleId: props.reple._id,
+        postId: props.reple.postId,
+      };
+      axios
+        .post('/api/reple/delete', body)
+        .then((response) => {
+          // console.log(response);
+          if (response.data.success) {
+            alert('댓글이 삭제되었습니다.');
+            window.location.reload();
+          }
+        })
+        .catch((err) => {
+          alert('댓글 삭제에 실패하였습니다.');
+        });
+    }
+  };
+
   return (
     <RepleContentDiv>
       <div className='author'>
+        {/* <Avatar
+          size='30'
+          round={true}
+          src={props.reple.author.photoURL}
+          style={{ border: '1px solid #c6c6c6' }}
+        /> */}
         <p>{props.reple.author.displayName}</p>
         {props.reple.author.uid === user.uid && (
           <div className='modalControl'>
@@ -57,7 +86,9 @@ function RepleContent(props) {
                 >
                   수정
                 </p>
-                <p className='delete'>삭제</p>
+                <p className='delete' onClick={(e) => DeleteHandler(e)}>
+                  삭제
+                </p>
               </div>
             )}
           </div>

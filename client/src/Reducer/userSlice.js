@@ -4,6 +4,8 @@ const initialState = {
   displayName: '',
   uid: '',
   accessToken: '',
+  photoURL: '',
+  isLoading: false,
 };
 
 export const userSlice = createSlice({
@@ -14,11 +16,14 @@ export const userSlice = createSlice({
       state.displayName = action.payload.displayName;
       state.uid = action.payload.uid;
       state.accessToken = action.payload.accessToken;
+      state.photoURL = action.payload.photoURL;
+      state.isLoading = true;
     },
     clearUser: (state) => {
       state.displayName = '';
       state.uid = '';
       state.accessToken = '';
+      state.photoURL = '';
     },
   },
 });

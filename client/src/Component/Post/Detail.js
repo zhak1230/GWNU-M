@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
+// import Avatar from 'react-avatar';
 
 import { PostDiv, Post, BtnDiv } from '../../Style/PostDetailCSS.js';
 
@@ -37,7 +38,15 @@ function Detail(props) {
     <PostDiv>
       <Post>
         <h1>{props.PostInfo.title}</h1>
-        <h3>{props.PostInfo.author.displayName}</h3>
+        <div className='author'>
+          {/* <Avatar
+            size='40'
+            round={true}
+            src={props.PostInfo.author.photoURL}
+            style={{ border: '1px solid #c6c6c6' }}
+          /> */}
+          <p>{props.PostInfo.author.displayName}</p>
+        </div>
         {props.PostInfo.image ? (
           <img
             src={props.PostInfo.image}

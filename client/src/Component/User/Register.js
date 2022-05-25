@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { LoginDiv } from '../../Style/UserCSS';
@@ -15,7 +16,14 @@ function Register() {
   const [NameCheck, setNameCheck] = useState(false);
   const [NameInfo, setNameInfo] = useState('');
 
+  const user = useSelector((state) => state.user);
   let navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.accessToken) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const RegisterFunc = async (e) => {
     setFlag(true);
@@ -36,6 +44,8 @@ function Register() {
 
     await createdUser.user.updateProfile({
       displayName: Name,
+      // photoURL:
+      //   'https://kr.object.ncloudstorage.com/gwnu-community/user/user.png',
     });
 
     // console.log(createdUser.user);
@@ -43,6 +53,8 @@ function Register() {
       email: createdUser.user.multiFactor.user.email,
       displayName: createdUser.user.multiFactor.user.displayName,
       uid: createdUser.user.multiFactor.user.uid,
+      // photoURL:
+      //   'https://kr.object.ncloudstorage.com/gwnu-community/user/user.png',
     };
     axios.post('/api/user/register', body).then((response) => {
       setFlag(false);
