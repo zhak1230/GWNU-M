@@ -71,7 +71,7 @@ State
  state의 갑이 바ㅜ끼어도 화면을 재랜더링(새로고침) 시킬 필요 x
 
  1. state의 값을 바꿀때는 항상 setState 사용!
- 2. setState를 html 태그의 on 속성 호출 : function(){}
+ 2. setState를 html 태그의 on 속성 호출 = function(){}
 
 
 */
