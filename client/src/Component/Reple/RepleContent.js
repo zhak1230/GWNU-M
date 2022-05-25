@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 
 import { RepleContentDiv, RepleUploadDiv } from '../../Style/RepleCSS.js';
 
+import moment from 'moment';
+import 'moment/locale/ko';
+
 function RepleContent(props) {
   const [ModalFlag, setModalFlag] = useState(false);
   const [Editflag, setEditflag] = useState(false);
@@ -14,6 +17,14 @@ function RepleContent(props) {
 
   const ref = useRef();
   useOnClickOutside(ref, () => setModalFlag(false));
+
+  const SetTime = (a, b) => {
+    if (a !== b) {
+      return moment(b).format('YYYY년 MMMM Do, hh:mm') + '(수정됨)';
+    } else {
+      return moment(a).format('YYYY년 MMMM Do, hh:mm');
+    }
+  };
 
   const SubmitHandler = (e) => {
     e.preventDefault();
@@ -94,6 +105,9 @@ function RepleContent(props) {
           </div>
         )}
       </div>
+      <p className='time'>
+        {SetTime(props.reple.createdAt, props.reple.updatedAt)}
+      </p>
       {Editflag ? (
         <RepleUploadDiv>
           <form>

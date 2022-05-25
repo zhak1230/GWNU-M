@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/ko';
 // import Avatar from 'react-avatar';
 
 import { PostDiv, Post, BtnDiv } from '../../Style/PostDetailCSS.js';
@@ -34,6 +36,14 @@ function Detail(props) {
     }
   };
 
+  const SetTime = (a, b) => {
+    if (a !== b) {
+      return moment(b).format('YYYY MMMM Do, a hh:mm') + ' (수정됨)';
+    } else {
+      return moment(a).format('YYYY MMMM Do, a hh:mm');
+    }
+  };
+
   return (
     <PostDiv>
       <Post>
@@ -46,6 +56,9 @@ function Detail(props) {
             style={{ border: '1px solid #c6c6c6' }}
           /> */}
           <p>{props.PostInfo.author.displayName}</p>
+          <p className='time'>
+            {SetTime(props.PostInfo.createdAt, props.PostInfo.updatedAt)}
+          </p>
         </div>
         {props.PostInfo.image ? (
           <img
