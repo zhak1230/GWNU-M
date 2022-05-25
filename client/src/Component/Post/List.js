@@ -19,7 +19,7 @@ function List(props) {
   return (
     <ListDiv>
       {props.PostList.map((post, idx) => {
-        console.log(post);
+        // console.log(post); 이거 키고끄기
         return (
           <ListItem key={idx}>
             <Link to={`/post/${post.postNum}`}>
