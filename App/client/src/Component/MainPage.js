@@ -86,7 +86,16 @@ function MainPage() {
             }}
           />
           <button onClick={() => SearchHandler()}>
-            <p style={{ marginTop: '8px', marginBottom: '8px' }}>검색</p>
+            <p
+              style={{
+                marginTop: '8px',
+                marginBottom: '8px',
+                fontSize: '8px',
+                color: 'black',
+              }}
+            >
+              검색
+            </p>
           </button>
         </div>
 
@@ -103,7 +112,7 @@ function MainPage() {
       {LoadMore && (
         <FooterDiv>
           <button
-            style={{ marginBottom: '10vh' }}
+            style={{ marginBottom: '10vh', color: 'black' }}
             onClick={() => getLoadMore()}
           >
             더 불러오기
