@@ -31,6 +31,9 @@ function Register() {
     if (!(Name && Email && PW && PWConfirm)) {
       return alert('모든 값을 채워주세요!');
     }
+    if (Email !== '@') {
+      return alert('이메일 형식을 확인해 주세요.');
+    }
     if (PW !== PWConfirm) {
       return alert('비밀번호와 비밀번호 확인 값은 같아야 합니다.');
     }
@@ -106,6 +109,7 @@ function Register() {
         <input
           type='email'
           value={Email}
+          placeholder='e-mail'
           onChange={(e) => {
             setEmail(e.currentTarget.value);
           }}

@@ -67,7 +67,7 @@ function MainPage() {
 
   useEffect(() => {
     getPostList();
-  }, [Sort]);
+  });
 
   const SearchHandler = () => {
     getPostList();
@@ -86,7 +86,7 @@ function MainPage() {
             }}
           />
           <button onClick={() => SearchHandler()}>
-            <i className='bi bi-search'></i>
+            <p style={{ marginTop: '8px', marginBottom: '8px' }}>검색</p>
           </button>
         </div>
 
