@@ -32,7 +32,7 @@ function Edit() {
       .catch((err) => {
         console.log(err);
       });
-  }, [params.postNum]);
+  }, []);
 
   useEffect(() => {
     setTitle(PostInfo.title);

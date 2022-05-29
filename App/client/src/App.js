@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, clearUser } from './Reducer/userSlice';
 import firebase from './firebase';
 
@@ -17,6 +17,7 @@ import Register from './Component/User/Register';
 
 function App() {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
@@ -27,7 +28,7 @@ function App() {
         dispatch(clearUser());
       }
     });
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
