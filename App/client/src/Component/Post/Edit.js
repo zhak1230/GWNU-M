@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ImageUpload from './ImageUpload.js';
 
-import { UploadDiv, UploadFrom, UploadButtonDiv } from '../../Style/UploadCSS';
+import { UploadDiv, UploadForm, UploadButtonDiv } from '../../Style/UploadCSS';
 
 function Edit() {
   let params = useParams();
@@ -32,7 +32,7 @@ function Edit() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params.postNum]);
 
   useEffect(() => {
     setTitle(PostInfo.title);
@@ -71,7 +71,7 @@ function Edit() {
   return (
     <UploadDiv>
       {Flag && (
-        <UploadFrom>
+        <UploadForm>
           <label htmlFor='label'>제목</label>
           <input
             id='title'
@@ -110,7 +110,7 @@ function Edit() {
               수정
             </button>
           </UploadButtonDiv>
-        </UploadFrom>
+        </UploadForm>
       )}
     </UploadDiv>
   );

@@ -67,7 +67,7 @@ function MainPage() {
 
   useEffect(() => {
     getPostList();
-  });
+  }, [Sort]);
 
   const SearchHandler = () => {
     getPostList();
@@ -80,7 +80,9 @@ function MainPage() {
           <input
             type='text'
             value={SearchTerm}
-            onChange={(e) => setSearchTerm(e.currentTarget.value)}
+            onChange={(e) => {
+              setSearchTerm(e.currentTarget.value);
+            }}
             onKeyDown={(e) => {
               if (e.keyCode === 13) SearchHandler();
             }}

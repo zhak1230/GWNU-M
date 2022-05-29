@@ -6,7 +6,7 @@ const UploadDiv = styled.div`
   margin-bottom: 1rem;
 `;
 
-const UploadFrom = styled.form`
+const UploadForm = styled.form`
   width: 80%;
   margin: 0 auto;
   display: flex;
@@ -81,4 +81,4 @@ const UploadButtonDiv = styled.div`
   }
 `;
 
-export { UploadDiv, UploadFrom, UploadButtonDiv };
+export { UploadDiv, UploadForm, UploadButtonDiv };

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ImageUpload from './ImageUpload';
-import { UploadDiv, UploadFrom, UploadButtonDiv } from '../../Style/UploadCSS';
+import ImageUpload from './ImageUpload.js';
+import {
+  UploadDiv,
+  UploadForm,
+  UploadButtonDiv,
+} from '../../Style/UploadCSS.js';
 import axios from 'axios';
 
 function Upload(props) {
   const [Title, setTitle] = useState('');
-  const [Content, setContent] = useState();
+  const [Content, setContent] = useState('');
   const [Image, setImage] = useState('');
 
   let navigate = useNavigate();
-
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -19,7 +22,7 @@ function Upload(props) {
       alert('로그인한 회원만 글을 작성할 수 있습니다.');
       navigate('/login');
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +55,7 @@ function Upload(props) {
 
   return (
     <UploadDiv>
-      <UploadFrom>
+      <UploadForm>
         <label htmlFor='label'>제목</label>
         <input
           id='title'
@@ -66,7 +69,6 @@ function Upload(props) {
         <label htmlFor='content'>내용</label>
         <textarea
           id='content'
-          type='text'
           value={Content}
           onChange={(e) => {
             setContent(e.currentTarget.value);
@@ -81,7 +83,7 @@ function Upload(props) {
             제출
           </button>
         </UploadButtonDiv>
-      </UploadFrom>
+      </UploadForm>
     </UploadDiv>
   );
 }

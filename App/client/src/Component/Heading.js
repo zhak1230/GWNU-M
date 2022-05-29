@@ -30,17 +30,28 @@ function Heading() {
             >
               home
             </Link>
-
-            <Link
-              to='/upload'
-              style={{
-                color: 'white',
-                textDecoration: 'none',
-                marginRight: '10px',
-              }}
-            >
-              upload
-            </Link>
+            {user.accessToken ? (
+              <Link
+                to='/upload'
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  marginRight: '10px',
+                }}
+              >
+                upload
+              </Link>
+            ) : (
+              <div
+                style={{
+                  color: 'gray',
+                  textDecoration: 'none',
+                  marginRight: '10px',
+                }}
+              >
+                upload
+              </div>
+            )}
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className='justify-content-end'>
