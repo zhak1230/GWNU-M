@@ -28,7 +28,7 @@ function MainPage() {
             setLoadMore(false);
           }
           // 0 idx ~ 4 idx : 5 skip
-          // 5 idx ~ 9 idx
+          // 5 idx ~ 9 idxc :
           // 10 idx ~ 14 idx : 10 skip
         }
       })
