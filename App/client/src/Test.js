@@ -68,7 +68,7 @@ State
  2. 두번째 인자 : State를 바꿔주는 함수
  3. useState 함수 인자 : State의 초기 Type, 값
 
- state의 갑이 바꺼끼어도 화면을 재랜더링(새로고침) 시킬 필요 x
+ state의 갑이 바꺼d끼어도 화면을 재랜더링(새로고침) 시킬 필요 x
 
  1. state의 값을 바꿀때는 항상 setState 사용!
  2. setState를 html 태그의 on 속성 호출 = function(){}
