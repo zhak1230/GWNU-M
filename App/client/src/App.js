@@ -17,7 +17,6 @@ import Register from './Component/User/Register';
 
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
