@@ -37,12 +37,12 @@ function Login() {
     if (user.accessToken) {
       navigate('/');
     }
-  }, [user, navigate]);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
       setErrorMsg('');
-    }, 5000);
+    }, 3500);
   }, [ErrorMsg]);
 
   return (

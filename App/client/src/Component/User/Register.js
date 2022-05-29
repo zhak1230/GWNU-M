@@ -23,7 +23,7 @@ function Register() {
     if (user.accessToken) {
       navigate('/');
     }
-  }, [user, navigate]);
+  }, []);
 
   const RegisterFunc = async (e) => {
     setFlag(true);
