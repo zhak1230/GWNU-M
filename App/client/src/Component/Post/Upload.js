@@ -14,6 +14,8 @@ function Upload(props) {
   const [Content, setContent] = useState('');
   const [Image, setImage] = useState('');
 
+  const [getImageData, setgetImageData] = useState('');
+
   let navigate = useNavigate();
   const user = useSelector((state) => state.user);
 
@@ -65,7 +67,7 @@ function Upload(props) {
             setTitle(e.currentTarget.value);
           }}
         />
-        <ImageUpload setImage={setImage} />
+        <ImageUpload setImage={setImage} setgetImageData={setgetImageData} />
         <label htmlFor='content'>내용</label>
         <textarea
           id='content'
@@ -75,13 +77,25 @@ function Upload(props) {
           }}
         />
         <UploadButtonDiv>
-          <button
-            onClick={(e) => {
-              onSubmit(e);
-            }}
-          >
-            제출
-          </button>
+          {getImageData ? (
+            <button
+              onClick={(e) => {
+                onSubmit(e);
+              }}
+              disabled={true}
+              style={{ background: '#dedede', border: 'none' }}
+            >
+              제출
+            </button>
+          ) : (
+            <button
+              onClick={(e) => {
+                onSubmit(e);
+              }}
+            >
+              제출
+            </button>
+          )}
         </UploadButtonDiv>
       </UploadForm>
     </UploadDiv>

@@ -15,9 +15,11 @@ function ImageUpload(props) {
     var formData = new FormData();
     formData.append('file', e.target.files[0]);
     try {
+      props.setgetImageData(true);
       setImageTime('이미지 첨부중입니다.');
       const response = await axios.post('/api/post/image/upload', formData);
       props.setImage(response.data.filePath);
+      props.setgetImageData(false);
       setImageTime('이미지 첨부에 성공하였습니다.');
     } catch (error) {
       console.log(error.code);
@@ -27,7 +29,7 @@ function ImageUpload(props) {
   useEffect(() => {
     setTimeout(() => {
       setImageTime('');
-    }, 3500);
+    }, 5000);
   }, [ImageTime]);
 
   return (
