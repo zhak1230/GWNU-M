@@ -11,7 +11,7 @@ const ListDiv = styled.div`
 
 const ListItem = styled.div`
   width: 100%;
-  height: auto;
+  height: 152px;
   min-height: 120px;
   background: #ffffff;
   margin-top: 5vh;
@@ -41,6 +41,7 @@ const ListItem = styled.div`
       }
     }
     p {
+      font-size: 12px;
       color: darkgrey;
       margin-bottom: 0px;
       &.time {
@@ -53,8 +54,15 @@ const ListItem = styled.div`
     text-decoration: none;
     .title {
       font-weight: bold;
+      
     }
   }
+    .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+    padding-bottom : 10px
 `;
 
 export { ListDiv, ListItem };

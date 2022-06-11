@@ -25,21 +25,31 @@ function List(props) {
             <Link to={`/post/${post.postNum}`}>
               <p className='title'>{post.title}</p>
               <div className='author'>
-                <div>
-                  {/* <Avatar
+                {/* <Avatar
                     size='40'
                     round={true}
                     src={post.author.photoURL}
                     style={{ border: '1px solid #c6c6c6' }}
                   /> */}
-                  <p>{post.author.displayName}</p>
-                </div>
+                <p>{post.author.displayName}</p>
+
                 <p className='time'>
                   {SetTime(post.createdAt, post.updatedAt)}
                 </p>
               </div>
-
-              <p>{post.content}</p>
+              <div className='main'>
+                <p>{post.content}</p>
+                {post.image ? (
+                  <img
+                    src={post.image}
+                    alt=''
+                    style={{
+                      width: 'auto',
+                      height: '60px',
+                    }}
+                  />
+                ) : null}
+              </div>
             </Link>
           </ListItem>
         );
