@@ -27,10 +27,36 @@ const Post = styled.div`
   box-shadow: 0px 19px 38px rgba(0, 0, 0, 0.03),
     0px 15px 12px rgba(0, 0, 0, 0.1);
   h1 {
-    font-weight: bold;
+    display: block;
+    color: black;
+    width: 100%;
+    font-weight: bolder !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2;
+    /*        height: 4.8em;*/
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    /*        -webkit-line-clamp: 3 ;*/
+    -webkit-box-orient: vertical;
   }
   p {
     margin-bottom: 0px;
+    display: block;
+    color: black;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2;
+    /*        height: 4.8em;*/
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    /*        -webkit-line-clamp: 3 ;*/
+    -webkit-box-orient: vertical;
   }
   .author {
     display: flex;

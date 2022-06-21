@@ -21,12 +21,20 @@ const ListItem = styled.div`
     0px 15px 12px rgba(0, 0, 0, 0.1);
   .title {
     margin-bottom: 10px;
+    display: block;
+    color: black;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bolder !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .author {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0px;
+    margin: 8px 0px;
     div {
       display: flex;
       align-items: center;
@@ -54,15 +62,28 @@ const ListItem = styled.div`
     text-decoration: none;
     .title {
       font-weight: bold;
-      
     }
   }
-    .main {
+  .main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0px;
-    padding-bottom : 10px
+  }
+  .contents {
+    display: block;
+    color: black;
+    width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.5;
+    height: 3em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
 `;
 
 export { ListDiv, ListItem };

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import List from './Post/List.js';
+import Notice from './Notice.js';
 import axios from 'axios';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 import { GNBDiv, FooterDiv } from '../Style/MainPageCSS.js';
@@ -110,6 +111,7 @@ function MainPage() {
           </Dropdown.Item>
         </DropdownButton>
       </GNBDiv>
+      {/* <Notice PostList={PostList} /> */}
       <List PostList={PostList} />
       {LoadMore && (
         <FooterDiv>

@@ -38,7 +38,7 @@ function List(props) {
                 </p>
               </div>
               <div className='main'>
-                <p>{post.content}</p>
+                <p className='contents'>{post.content}</p>
                 {post.image ? (
                   <img
                     src={post.image}
@@ -46,6 +46,7 @@ function List(props) {
                     style={{
                       width: 'auto',
                       height: '60px',
+                      borderRadius: '7px',
                     }}
                   />
                 ) : null}

@@ -22,7 +22,7 @@ function ImageUpload(props) {
       props.setgetImageData(false);
       setImageTime('이미지 첨부에 성공하였습니다.');
     } catch (error) {
-      console.log(error.code);
+      console.log(error);
     }
   }
 

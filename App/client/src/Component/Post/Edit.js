@@ -6,7 +6,7 @@ import ImageUpload from './ImageUpload.js';
 
 import { UploadDiv, UploadForm, UploadButtonDiv } from '../../Style/UploadCSS';
 
-function Edit() {
+function Edit(props) {
   let params = useParams();
   let navigate = useNavigate();
 
@@ -15,6 +15,8 @@ function Edit() {
   const [Title, setTitle] = useState('');
   const [Content, setContent] = useState();
   const [Image, setImage] = useState('');
+
+  const [getImageData, setgetImageData] = useState('');
 
   useEffect(() => {
     let body = {
@@ -81,7 +83,7 @@ function Edit() {
               setTitle(e.currentTarget.value);
             }}
           />
-          <ImageUpload setImage={setImage} />
+          <ImageUpload setImage={setImage} setgetImageData={setgetImageData} />
           <label htmlFor='content'>내용</label>
           <textarea
             id='content'
@@ -93,22 +95,47 @@ function Edit() {
           />
 
           <UploadButtonDiv>
-            <button
-              className='cancel'
-              onClick={(e) => {
-                e.preventDefault();
-                navigate(-1);
-              }}
-            >
-              취소
-            </button>
-            <button
-              onClick={(e) => {
-                onSubmit(e);
-              }}
-            >
-              수정
-            </button>
+            {getImageData ? (
+              <div>
+                <button
+                  className='cancel'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(-1);
+                  }}
+                >
+                  취소
+                </button>
+                <button
+                  onClick={(e) => {
+                    onSubmit(e);
+                  }}
+                  disabled={true}
+                  style={{ background: '#dedede', border: 'none' }}
+                >
+                  수정
+                </button>
+              </div>
+            ) : (
+              <div>
+                <button
+                  className='cancel'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(-1);
+                  }}
+                >
+                  취소
+                </button>
+                <button
+                  onClick={(e) => {
+                    onSubmit(e);
+                  }}
+                >
+                  수정
+                </button>
+              </div>
+            )}
           </UploadButtonDiv>
         </UploadForm>
       )}
